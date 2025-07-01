@@ -1,0 +1,233 @@
+body {
+  margin: 0;
+  font-family: "Silkscreen", monospace;
+  background-color: #000;
+  color: #00ff00;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  text-shadow: 0 0 2px #00ff00;
+  animation: flicker 1.5s infinite;
+}
+
+@keyframes flicker {
+  0%,
+  19%,
+  21%,
+  23%,
+  25%,
+  54%,
+  56%,
+  100% {
+    opacity: 1;
+  }
+  20%,
+  24%,
+  55% {
+    opacity: 0.85;
+  }
+}
+
+@keyframes scanlines {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 4px;
+  }
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1000;
+  animation: scanlines 1s linear infinite;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 255, 0, 0.03),
+    rgba(0, 255, 0, 0.03) 2px,
+    transparent 2px,
+    transparent 4px
+  );
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  max-width: 600px;
+  margin-top: 40px;
+  padding: 30px;
+  background-color: #111;
+  border: 2px solid #00ff00;
+  border-radius: 10px;
+  box-shadow: inset 0 0 20px #00ff0044, 0 0 20px #00ff00;
+}
+
+.rangeGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 15px 0;
+}
+
+.rangeGroup label {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  font-weight: bold;
+  text-align: center;
+  color: #00ff00;
+}
+
+.rangeControls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.rangeControls input[type="number"] {
+  width: 60px;
+  margin: 0;
+}
+
+.rangeControls input[type="range"] {
+  flex: 1;
+}
+
+input[type="number"],
+input[type="range"] {
+  background-color: #000;
+  color: #00ff00;
+  border: 2px solid #00ff00;
+  border-radius: 4px;
+  padding: 6px;
+  font-family: inherit;
+  font-size: 1rem;
+  outline: none;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 8px;
+  background: #002200;
+  border-radius: 4px;
+  box-shadow: 0 0 5px #00ff00;
+  transition: background 0.3s;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  background: #00ff00;
+  border: 2px solid #003300;
+  cursor: pointer;
+  box-shadow: 0 0 8px #00ff00;
+  transition: transform 0.2s;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  background: #00ff00;
+  border: 2px solid #003300;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 8px #00ff00;
+}
+
+input[type="range"]::-moz-range-track {
+  background: #002200;
+  height: 8px;
+  border-radius: 4px;
+}
+
+input[type="range"]:focus {
+  box-shadow: 0 0 10px #00ff00;
+}
+
+.generateButton {
+  margin: 20px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: "Silkscreen", monospace;
+  color: #00ff00;
+  background-color: #000;
+  border: 2px solid #00ff00;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.generateButton:hover {
+  background-color: #00ff00;
+  color: #000;
+  box-shadow: 0 0 10px #00ff00;
+}
+
+.generateButton:hover::after {
+  content: "_";
+  animation: blink 1s steps(2, start) infinite;
+}
+
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.result {
+  padding: 20px;
+  margin-top: 20px;
+  min-height: 40px;
+  width: 100%;
+  text-align: center;
+  font-size: 4rem;
+  font-weight: bold;
+  color: #00ff00;
+  border-top: 1px dashed #00ff00;
+  text-shadow: 0 0 3px #00ff00, 0 0 5px #00ff00, 0 0 7px #00ff00;
+}
+
+footer {
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+  margin-top: auto;
+  text-align: center;
+  color: #00ff00;
+  font-size: 0.8rem;
+  border-top: 1px solid #00ff00;
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RNG</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="title">.>Random Number Generator</h1>
+
+      <div class="rangeGroup">
+        <label for="minInput">Minimum</label>
+        <div class="rangeControls">
+          <input type="number" id="minInput" min="0" max="100" value="0" />
+          <input
+            type="range"
+            id="minRange"
+            min="0"
+            max="100"
+            value="0"
+            title="Minimum value range slider"
+          />
+        </div>
+      </div>
+
+      <div class="rangeGroup">
+        <label for="maxInput">Maximum</label>
+        <div class="rangeControls">
+          <input type="number" id="maxInput" min="0" max="100" value="0" />
+          <input
+            type="range"
+            id="maxRange"
+            min="0"
+            max="100"
+            value="0"
+            title="Maximum value range slider"
+          />
+        </div>
+      </div>
+
+      <button class="generateButton" onclick="generateRandom()">
+        Generate
+      </button>
+
+      <div class="result" id="result"></div>
+    </div>
+    <footer><p>2025 JAKUB KOPROWSKI</p></footer>
+    <script src="script.js"></script>
+  </body>
+</html>
